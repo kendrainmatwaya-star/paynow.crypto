@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#07100c">
-<meta name="description" content="ZimCrypto Pro — realistic educational crypto market simulator">
-<title>ZimCrypto Pro — exchange</title>
+<meta name="description" content="ZimCrypto exchange - using paynow/ecocash">
+<title>ZimCrypto — exchange</title>
 
 <style>
 *{
@@ -963,7 +963,7 @@ footer{
         <div class="logo">Z</div>
 
         <div>
-            <div class="brand-name">ZimCrypto</div>
+            <div class="brand-name">ZimCrypto Exchange</div>
             <div class="brand-sub">MARKET</div>
         </div>
     </div>
@@ -972,7 +972,7 @@ footer{
 
         <div class="live">
             <i class="live-dot"></i>
-            SIMULATED MARKET
+            MARKET
         </div>
 
         <button class="buy-top" id="openBuy">
@@ -999,7 +999,7 @@ footer{
 
         <div>
             <span class="market-price" id="marketPrice">
-                $65,420.00
+                $84,420.00
             </span>
 
             <span class="market-change green" id="marketChange">
@@ -1092,7 +1092,7 @@ footer{
         <section class="card">
 
             <div class="card-head">
-                <div class="card-title">Signal Engine</div>
+                <div class="card-title">Signal</div>
                 <div class="card-note">Multi-factor</div>
             </div>
 
@@ -1166,7 +1166,7 @@ footer{
 
                 <div class="engine-status">
                     <span class="engine-dot"></span>
-                    Simulation engine online
+                    online
                 </div>
 
                 <div class="engine-row">
@@ -1190,7 +1190,7 @@ footer{
                 </div>
 
                 <div class="engine-row">
-                    <span>Engine cycles</span>
+                    <span>cycles</span>
                     <span id="engineCycles">0</span>
                 </div>
 
@@ -1268,7 +1268,7 @@ footer{
     <section class="card">
 
         <div class="card-head">
-            <div class="card-title">Simulated Order Book</div>
+            <div class="card-title">Order Book</div>
             <div class="card-note">Depth</div>
         </div>
 
@@ -1339,15 +1339,15 @@ footer{
         <div class="portfolio">
 
             <div class="stat-label">
-                SIMULATED BALANCE
+                Wallet
             </div>
 
             <div class="balance">
-                $20,000.00
+                $0.00
             </div>
 
             <div class="portfolio-sub">
-                 funds are connected.
+                 add funds
             </div>
 
             <div class="portfolio-grid">
@@ -1369,7 +1369,7 @@ footer{
 
                 <div class="portfolio-item">
                     <small>STATUS</small>
-                    <span class="green">Practice</span>
+                    <span class="green">Trading</span>
                 </div>
 
             </div>
@@ -1386,8 +1386,8 @@ footer{
 <section class="card" style="margin-top:14px">
 
     <div class="card-head">
-        <div class="card-title">Simulated Trade Flow</div>
-        <div class="card-note">Live engine events</div>
+        <div class="card-title">Trade Flow</div>
+        <div class="card-note">Live events</div>
     </div>
 
     <div class="activity" id="activity"></div>
@@ -1398,7 +1398,8 @@ footer{
 <footer>
     ZimCrypto is an Crypto market platform.
     Prices, candles, volume, order flow and signals are same from Binance.
-    You can buy using  your EcoCash through Paynow .
+    You can buy using  your EcoCash through Paynow. Make sure to copy your
+    Wallet address from Binance or any other crypto platform 
 </footer>
 
 </div>
@@ -1426,7 +1427,7 @@ footer{
         <div class="modal-body">
 
             <div class="practice-banner">
-                Buy: this is a purchase flow.
+                help: this is a purchase flow.
                 The Paynow button opens the  Paynow destination.
             </div>
 
@@ -1443,6 +1444,20 @@ footer{
                 <option value="USDT">Tether (USDT)</option>
 
             </select>
+
+            <label class="form-label">
+                Wallet address 
+            </label>
+
+            <input
+                class="address-input"
+                id="cryptoAddress"
+                type="number"
+                min="1"
+                step="1"
+                value=""
+                placeholder="Enter Wallet address"
+            >
 
 
             <label class="form-label">
@@ -1473,7 +1488,7 @@ footer{
                 </div>
 
                 <div class="quote-row">
-                    <span>Practice network fee</span>
+                    <span>network fee</span>
                     <span id="quoteFee">$0.00</span>
                 </div>
 
