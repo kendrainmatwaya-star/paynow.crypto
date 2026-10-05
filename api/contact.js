@@ -16,15 +16,35 @@ export default async function handler(req, res) {
       });
     }
 
-    // Temporary test response.
-    // We will connect this to email/database storage next.
-    console.log("CONTACT MESSAGE:", {
-      name,
-      email,
-      phone,
-      subject,
-      message
-    });
+    const response = await fetch(
+      `${process.env.SUPABASE_URL}/rest/v1/contact_messages`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "apikey": process.env.SUPABASE_ANON_KEY,
+          "Authorization": `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+          "Prefer": "return=minimal"
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone: phone || null,
+          subject,
+          message
+        })
+      }
+    );
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Supabase error:", errorText);
+
+      return res.status(500).json({
+        success: false,
+        message: "Could not save your message."
+      });
+    }
 
     return res.status(200).json({
       success: true,
@@ -32,11 +52,11 @@ export default async function handler(req, res) {
     });
 
   } catch (error) {
-    console.error(error);
+    console.error("Contact API error:", error);
 
     return res.status(500).json({
       success: false,
       message: "Something went wrong. Please try again."
     });
   }
-}
+        }
