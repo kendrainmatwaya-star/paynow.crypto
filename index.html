@@ -3402,34 +3402,7 @@ $("buyAsset").addEventListener(
 );
 
 
-$("buyAmount").addEventListener(
-    "input",
-    updateQuote
-);
-
-
-/* =========================================================
-   PAYNOW PRACTICE BUTTON
-   ========================================================= */
-
-$("payNow").addEventListener(
-    "click",
-    ()=>{
-
-        /*
-            This is intentionally only a practice
-            redirect. It does not send payment data.
-        */
-
-        window.open(
-            PRACTICE_PAYNOW_LINK,
-            "_blank",
-            "noopener,noreferrer"
-        );
-
-    }
-);
-
+$("buyAmount").addEventListener 
 
 /* =========================================================
    ASSET SWITCH
